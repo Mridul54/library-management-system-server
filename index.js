@@ -45,6 +45,21 @@ async function run() {
         const result = await bookCategoryCollection.findOne(query);
         res.send(result);
     })
+    app.get('/book/:category_name', async(req, res) => {
+        
+        const category_name = req.params.category_name;
+        console.log(category_name)
+        const query = {category:category_name}
+        const result = await bookCollection.find(query).toArray();
+        res.send(result);
+
+    })
+    app.get('/book/:name', async(req, res) => {
+        const name = req.params.name;
+        const query = {_id: new ObjectId(name)}
+        const result = await bookCollection.findOne(query);
+        res.send(result);
+    })
 
     
 
