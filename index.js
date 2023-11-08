@@ -54,12 +54,14 @@ async function run() {
         res.send(result);
 
     })
-    app.get('/book/:name', async(req, res) => {
-        const name = req.params.name;
-        const query = {_id: new ObjectId(name)}
+    app.get('/book/:category_name/:id', async(req, res) => {
+        const id = req.params.id;
+        const query = {_id: new ObjectId(id)}
         const result = await bookCollection.findOne(query);
         res.send(result);
     })
+
+    
 
     
 
